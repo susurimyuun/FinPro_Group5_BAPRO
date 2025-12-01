@@ -10,31 +10,31 @@ typedef struct {
 
 // Profil yang dipakai untuk matching data negara (region, timezone, dll)
 typedef struct {
-    int gender;              // 1–4
-    int region;              // 1–3
-    char country[40];        // string
-    char timeZone[20];       // ex: GMT+7
+    int gender;              
+    int region;              
+    char country[40];        
+    char timeZone[20];      
 
-    int mainLanguage;        // 1–6 (International Main Language)
+    int mainLanguage;        
     char otherLanguages[100];
 } MatchProfile;
 
 // Rating 0–10 untuk tiap dimensi (buat dibandingkan ke tabel negara)
 typedef struct {
-    int resources;           // Resources (0–10)
-    int needs;               // Needs (0–10)
-    int techLevel;           // Tech Level (0–10)
-    int politicalWill;       // Political Will (0–10)
-    int economicStrength;    // Economic Strength (0–10)
-    int humanCapital;        // Human Capital (0–10)
-    int digitalReadiness;    // Digital Readiness (0–10)
-    int climateVulnerability;// Climate Vulnerability (0–10)
+    int resources; 
+    int needs;
+    int techLevel;           
+    int politicalWill;     
+    int economicStrength;   
+    int humanCapital;       
+    int digitalReadiness;    
+    int climateVulnerability;
 } ScoreProfile;
 
 // Metode + rating (khusus untuk matching method 1–5)
 typedef struct {
-    int method;              // 1–5 (Donor, Tech, Climate, Gov, VC)
-    ScoreProfile score;      // semua nilai 0–10
+    int method;         
+    ScoreProfile score; 
 } MethodProfile;
 
 // User lengkap
@@ -46,7 +46,7 @@ typedef struct {
 
 // LIST DISPLAY
 void printGenderList() {
-    printf("\n-- Gender --\n");
+    printf("\nGender = \n");
     printf("1. Male\n");
     printf("2. Female\n");
     printf("3. Prefer not to say\n");
@@ -54,14 +54,14 @@ void printGenderList() {
 }
 
 void printRegionList() {
-    printf("\n-- Region (Matching) --\n");
+    printf("\nRegion = \n");
     printf("1. Southeast Asia\n");
     printf("2. South Asia\n");
     printf("3. Central Asia\n");
 }
 
 void printMainLanguageList() {
-    printf("\n-- International Main Language (Matching) --\n");
+    printf("\nInternational Main Language = \n");
     printf("1. English\n");
     printf("2. Mandarin\n");
     printf("3. Spanish\n");
@@ -71,14 +71,13 @@ void printMainLanguageList() {
 }
 
 void printMethodList() {
-    printf("\n-- Matching Method (If you are...) --\n");
+    printf("\nMatching Method = \n");
     printf("1. Donor / NGO\n");
     printf("2. Tech Company\n");
     printf("3. Climate Activist\n");
     printf("4. Conservative Government\n");
     printf("5. Venture Capitalist\n");
 }
-// INPUT FUNCTIONS
 
 // Input identitas user
 void inputIdentity(UserIdentity *id) {
@@ -102,9 +101,21 @@ void inputMatchProfile(MatchProfile *m) {
     printf("Choose Gender (1-4)          : ");
     scanf("%d", &m->gender);
 
+    // validation
+    while (m->gender < 1 || m->gender > 4) {
+        printf("Invalid input. Choose 1-4 : ");
+        scanf("%d", &m->gender);
+    }
+
     printRegionList();
     printf("Choose Region (1-3)          : ");
     scanf("%d", &m->region);
+
+    // validation
+    while (m->region < 1 || m->region > 3) {
+        printf("Invalid input. Choose 1-3 : ");
+        scanf("%d", &m->region);
+    }
 
     printf("Country                      : ");
     scanf(" %39[^\n]", m->country);
@@ -115,6 +126,12 @@ void inputMatchProfile(MatchProfile *m) {
     printMainLanguageList();
     printf("Choose Main Language (1-6)   : ");
     scanf("%d", &m->mainLanguage);
+
+    // validation
+    while (m->mainLanguage < 1 || m->mainLanguage > 6) {
+        printf("Invalid input. Choose 1-6 : ");
+        scanf("%d", &m->mainLanguage);
+    }
 
     printf("Other Languages (free text)  : ");
     scanf(" %99[^\n]", m->otherLanguages);
@@ -128,31 +145,69 @@ void inputMethodProfile(MethodProfile *mp) {
     printf("Choose Matching Method (1-5) : ");
     scanf("%d", &mp->method);
 
+    // validation
+    while (mp->method < 1 || mp->method > 5) {
+        printf("Invalid input. Choose 1-5 : ");
+        scanf("%d", &mp->method);
+    }
+
     printf("\nNow rate each dimension with a value from 0 to 10.\n");
 
     printf("Resources (0-10)             : ");
     scanf("%d", &mp->score.resources);
+    while (mp->score.resources < 0 || mp->score.resources > 10) {
+        printf("Invalid. Enter 0-10: ");
+        scanf("%d", &mp->score.resources);
+    }
 
     printf("Needs (0-10)                 : ");
     scanf("%d", &mp->score.needs);
+    while (mp->score.needs < 0 || mp->score.needs > 10) {
+        printf("Invalid. Enter 0-10: ");
+        scanf("%d", &mp->score.needs);
+    }
 
     printf("Tech Level (0-10)            : ");
     scanf("%d", &mp->score.techLevel);
+    while (mp->score.techLevel < 0 || mp->score.techLevel > 10) {
+        printf("Invalid. Enter 0-10: ");
+        scanf("%d", &mp->score.techLevel);
+    }
 
     printf("Political Will (0-10)        : ");
     scanf("%d", &mp->score.politicalWill);
+    while (mp->score.politicalWill < 0 || mp->score.politicalWill > 10) {
+        printf("Invalid. Enter 0-10: ");
+        scanf("%d", &mp->score.politicalWill);
+    }
 
     printf("Economic Strength (0-10)     : ");
     scanf("%d", &mp->score.economicStrength);
+    while (mp->score.economicStrength < 0 || mp->score.economicStrength > 10) {
+        printf("Invalid. Enter 0-10: ");
+        scanf("%d", &mp->score.economicStrength);
+    }
 
     printf("Human Capital (0-10)         : ");
     scanf("%d", &mp->score.humanCapital);
+    while (mp->score.humanCapital < 0 || mp->score.humanCapital > 10) {
+        printf("Invalid. Enter 0-10: ");
+        scanf("%d", &mp->score.humanCapital);
+    }
 
     printf("Digital Readiness (0-10)     : ");
     scanf("%d", &mp->score.digitalReadiness);
+    while (mp->score.digitalReadiness < 0 || mp->score.digitalReadiness > 10) {
+        printf("Invalid. Enter 0-10: ");
+        scanf("%d", &mp->score.digitalReadiness);
+    }
 
     printf("Climate Vulnerability (0-10) : ");
     scanf("%d", &mp->score.climateVulnerability);
+    while (mp->score.climateVulnerability < 0 || mp->score.climateVulnerability > 10) {
+        printf("Invalid. Enter 0-10: ");
+        scanf("%d", &mp->score.climateVulnerability);
+    }
 
     printf("\nMethod & rating scores saved! \n");
 }
@@ -175,4 +230,3 @@ int main() {
 
     return 0;
 }
-

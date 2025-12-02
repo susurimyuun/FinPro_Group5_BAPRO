@@ -7,7 +7,7 @@ typedef struct {
     char nickname[30];
     char dateOfBirth[15];
 } UserIdentity;
-
+//tes tes
 // Profil yang dipakai untuk matching data negara (region, timezone, dll)
 typedef struct {
     int gender;              

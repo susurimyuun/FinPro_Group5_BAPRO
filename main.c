@@ -154,10 +154,10 @@ int main() {
     printf("\n=== INPUT MATCH PROFILE ===\n");
 
     printf("Country                      : ");
-    scanf(" %39[^\n]", currentUser.);
+    scanf(" %39[^\n]", currentUser.name);
 
     printf("Time Zone (ex: Jakarta 7) : ");
-    scanf(" %19[^\n]", m->timeZone);
+    scanf(" %19[^\n]", currentUser.);
 
 
 

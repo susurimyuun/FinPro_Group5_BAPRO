@@ -8,7 +8,7 @@ typedef struct {
     const char name[50];
     const char region[50];
     int sdg_focus;        
-    
+    //tesstt
     // Core Stats
     int resources;
     int needs;

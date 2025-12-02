@@ -5,10 +5,10 @@
 typedef struct {
 
     int id;
-    const char name[50];
+    const char name[50]; //nama negara
     const char region[50];
     int sdg_focus;        
-    //tesstt
+    
     // Core Stats
     int resources;
     int needs;
@@ -24,8 +24,8 @@ typedef struct {
     int trade_openness;      // 0-10
     
     // Time Zone
-    float utc_offset;        // e.g., 7.0 for UTC+7, 5.5 for UTC+5:30
-} User_Data;
+    float timezone;        // e.g., 7.0 for UTC+7, 5.5 for UTC+5:30
+} score;
 
 // DISPLAY FUNCTIONS
 
@@ -41,87 +41,101 @@ void printMethodList() {
 
 
 // Input metode + rating 0–10 for every category
-void inputMethodProfile(MethodProfile *mp) {
-    printf("\n=== INPUT MATCHING METHOD & SCORES ===\n");
+void inputMethodProfile(score *mp) {
+    printf("\n===== INPUT MAIN DATA USER ======\n");
 
-    printf("\n=== INPUT MATCH PROFILE ===\n");
+    printf ("input your country name :  ");
+    scanf("%s", mp->name);
 
-    printf("Country : ");
-    scanf(" %39[^\n]", &currentUser.name);
-    printMethodList();
-    printf("Choose Matching Method (1-5) : ");
-    scanf("%d", &mp->method);
+    printf ("input your region : ");
+    scanf("%s", mp->region);
 
-    // validation
-    while (mp->method < 1 || mp->method > 5) {
-        printf("Invalid input. Choose 1-5 : ");
-        scanf("%d", &mp->method);
+    printf ("English proficiency level (0-10): ");
+    scanf("%d", mp->english_proficiency);
+    while (mp->english_proficiency < 0 || mp->english_proficiency > 10) {
+        printf("Invalid. Enter 0-10: ");
+        scanf("%d", &mp->english_proficiency);
     }
 
-    printf("\nNow rate each dimension with a value from 0 to 10.\n");
+    printf("Your country timezone (ex: 09:00 -> 9.0): ");
+    scanf("%d", mp->timezone);
+
+    printf("\n=== INPUT MATCHING METHOD & SCORES ===\n");
 
     printf("Resources (0-10)             : ");
-    scanf("%d", &mp->score.resources);
-    while (mp->score.resources < 0 || mp->score.resources > 10) {
+    scanf("%d", &mp->resources);
+    while (mp->resources < 0 || mp->resources > 10) {
         printf("Invalid. Enter 0-10: ");
-        scanf("%d", &mp->score.resources);
+        scanf("%d", &mp->resources);
     }
 
     printf("Needs (0-10)                 : ");
-    scanf("%d", &mp->score.needs);
-    while (mp->score.needs < 0 || mp->score.needs > 10) {
+    scanf("%d", &mp->needs);
+    while (mp->needs < 0 || mp->needs > 10) {
         printf("Invalid. Enter 0-10: ");
-        scanf("%d", &mp->score.needs);
+        scanf("%d", &mp->needs);
     }
 
-    printf("Tech Level (0-10)            : ");
-    scanf("%d", &mp->score.techLevel);
-    while (mp->score.techLevel < 0 || mp->score.techLevel > 10) {
+    printf("Tech level (0-10)            : ");
+    scanf("%d", &mp->tech_level);
+    while (mp->tech_level < 0 || mp->tech_level > 10) {
         printf("Invalid. Enter 0-10: ");
-        scanf("%d", &mp->score.techLevel);
+        scanf("%d", &mp->tech_level);
     }
 
-    printf("Political Will (0-10)        : ");
-    scanf("%d", &mp->score.politicalWill);
-    while (mp->score.politicalWill < 0 || mp->score.politicalWill > 10) {
+    printf("Political will (0-10)        : ");
+    scanf("%d", &mp->political_will);
+    while (mp->political_will < 0 || mp->political_will > 10) {
         printf("Invalid. Enter 0-10: ");
-        scanf("%d", &mp->score.politicalWill);
+        scanf("%d", &mp->political_will);
     }
 
-    printf("Economic Strength (0-10)     : ");
-    scanf("%d", &mp->score.economicStrength);
-    while (mp->score.economicStrength < 0 || mp->score.economicStrength > 10) {
+    printf("Economic strength (0-10)     : ");
+    scanf("%d", &mp->economic_strength);
+    while (mp->economic_strength < 0 || mp->economic_strength > 10) {
         printf("Invalid. Enter 0-10: ");
-        scanf("%d", &mp->score.economicStrength);
+        scanf("%d", &mp->economic_strength);
     }
 
-    printf("Human Capital (0-10)         : ");
-    scanf("%d", &mp->score.humanCapital);
-    while (mp->score.humanCapital < 0 || mp->score.humanCapital > 10) {
+    printf("Human capital (0-10)         : ");
+    scanf("%d", &mp->human_capital);
+    while (mp->human_capital < 0 || mp->human_capital > 10) {
         printf("Invalid. Enter 0-10: ");
-        scanf("%d", &mp->score.humanCapital);
+        scanf("%d", &mp->human_capital);
     }
 
-    printf("Digital Readiness (0-10)     : ");
-    scanf("%d", &mp->score.digitalReadiness);
-    while (mp->score.digitalReadiness < 0 || mp->score.digitalReadiness > 10) {
+    printf("Digital readiness (0-10)     : ");
+    scanf("%d", &mp->digital_readiness);
+    while (mp->digital_readiness < 0 || mp->digital_readiness > 10) {
         printf("Invalid. Enter 0-10: ");
-        scanf("%d", &mp->score.digitalReadiness);
+        scanf("%d", &mp->digital_readiness);
     }
 
-    printf("Climate Vulnerability (0-10) : ");
-    scanf("%d", &mp->score.climateVulnerability);
-    while (mp->score.climateVulnerability < 0 || mp->score.climateVulnerability > 10) {
+    printf("Climate vulnerability (0-10) : ");
+    scanf("%d", &mp->climate_vulnerability);
+    while (mp->climate_vulnerability < 0 || mp->climate_vulnerability > 10) {
         printf("Invalid. Enter 0-10: ");
-        scanf("%d", &mp->score.climateVulnerability);
+        scanf("%d", &mp->climate_vulnerability);
     }
-    printf("Time Zone (ex: Jakarta 7) : ");
-    scanf(" %19[^\n]", &mp->score.);
+
+    printf ("English proficiency level (0-10): ");
+    scanf("%d", mp->english_proficiency);
+    while (mp->english_proficiency < 0 || mp->english_proficiency > 10) {
+        printf("Invalid. Enter 0-10: ");
+        scanf("%d", &mp->english_proficiency);
+    }
+
+
+    pritnf ("Trade opennes for distance point plus one country to another (0-10): ");
+    scanf("%d", mp->trade_openness);
+     while (mp->trade_openness < 0 || mp->trade_openness > 10) {
+        printf("Invalid. Enter 0-10: ");
+        scanf("%d", &mp->trade_openness);
+    }
     
-    printf("\nMethod & rating scores saved! \n");
 }
 
-void Donor_Execute(currentUser[], ){
+void Donor_Execute( ){
 
 }
 
@@ -129,8 +143,8 @@ void Donor_Execute(currentUser[], ){
 // execute the program 
 
 int main() {
-    User_Data currentUser;
-    User_Data Asian_Countries = {
+    score currentUser;
+    score Asian_Countries = {
         {1, "Timor-Leste", "SE Asia", 1, 4, 9, 2, 5, 3, 6, 3, 8,    3, 2,   9.0},
         {2, "India", "South Asia", 2, 8, 7, 8, 6, 9, 6, 6, 7,       7, 5,   5.5},
         {3, "Thailand", "SE Asia", 3, 6, 5, 6, 4, 7, 8, 6, 6,       4, 7,   7.0},
@@ -152,7 +166,8 @@ int main() {
         {19, "Singapore", "SE Asia", 17, 10, 1, 10, 9, 10, 10, 10, 2, 10, 10,  8.0},
         {20, "Japan", "East Asia", 9, 9, 2, 10, 9, 10, 10, 9, 4,    4, 8,   9.0},
         {21, "Kazakhstan", "Central Asia", 7, 7, 4, 5, 5, 6, 7, 6, 5, 3, 5,   5.0},
-        {22, "Pakistan", "South Asia", 13, 3, 9, 4, 3, 4, 4, 4, 9,  6, 4,   5.0}}
+        {22, "Pakistan", "South Asia", 13, 3, 9, 4, 3, 4, 4, 4, 9,  6, 4,   5.0}
+    }
 
 
 
@@ -162,5 +177,5 @@ int main() {
     // currentUser.match.region, timeZone, mainLanguage -> filter tambahan (bisa di gunakan hanya tampilan saja)
     // BESOK GUE MAU BUAT PRINTF RESULTNYA, tapi nanti aja tunggu programnya jadi YAKK
 
-    return 0;
+    return 0; 
 }

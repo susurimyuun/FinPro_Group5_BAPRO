@@ -23,13 +23,11 @@ typedef struct {
     int english_proficiency; // 0-10
     int trade_openness;      // 0-10
     
-    // NEW: Time Zone
+    // Time Zone
     float utc_offset;        // e.g., 7.0 for UTC+7, 5.5 for UTC+5:30
 } User_Data;
 
 // DISPLAY FUNCTIONS
-
-
 
 void printMethodList() {
     printf("\nMatching Method = \n");
@@ -41,9 +39,8 @@ void printMethodList() {
 }
 
 
-// Input profil untuk matching region / bahasa / timezone
 
-// Input metode + rating 0–10 untuk tiap dimensi
+// Input metode + rating 0–10 for every category
 void inputMethodProfile(MethodProfile *mp) {
     printf("\n=== INPUT MATCHING METHOD & SCORES ===\n");
 
@@ -153,11 +150,11 @@ int main() {
 
     printf("\n=== INPUT MATCH PROFILE ===\n");
 
-    printf("Country                      : ");
-    scanf(" %39[^\n]", currentUser.name);
+    printf("Country : ");
+    scanf(" %39[^\n]", &currentUser.name);
 
     printf("Time Zone (ex: Jakarta 7) : ");
-    scanf(" %19[^\n]", currentUser.);
+    scanf(" %19[^\n]", &currentUser.utc_offset);
 
 
 

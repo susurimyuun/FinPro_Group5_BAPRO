@@ -44,6 +44,10 @@ void printMethodList() {
 void inputMethodProfile(MethodProfile *mp) {
     printf("\n=== INPUT MATCHING METHOD & SCORES ===\n");
 
+    printf("\n=== INPUT MATCH PROFILE ===\n");
+
+    printf("Country : ");
+    scanf(" %39[^\n]", &currentUser.name);
     printMethodList();
     printf("Choose Matching Method (1-5) : ");
     scanf("%d", &mp->method);
@@ -111,7 +115,9 @@ void inputMethodProfile(MethodProfile *mp) {
         printf("Invalid. Enter 0-10: ");
         scanf("%d", &mp->score.climateVulnerability);
     }
-
+    printf("Time Zone (ex: Jakarta 7) : ");
+    scanf(" %19[^\n]", &mp->score.);
+    
     printf("\nMethod & rating scores saved! \n");
 }
 
@@ -147,14 +153,6 @@ int main() {
         {20, "Japan", "East Asia", 9, 9, 2, 10, 9, 10, 10, 9, 4,    4, 8,   9.0},
         {21, "Kazakhstan", "Central Asia", 7, 7, 4, 5, 5, 6, 7, 6, 5, 3, 5,   5.0},
         {22, "Pakistan", "South Asia", 13, 3, 9, 4, 3, 4, 4, 4, 9,  6, 4,   5.0}}
-
-    printf("\n=== INPUT MATCH PROFILE ===\n");
-
-    printf("Country : ");
-    scanf(" %39[^\n]", &currentUser.name);
-
-    printf("Time Zone (ex: Jakarta 7) : ");
-    scanf(" %19[^\n]", &currentUser.utc_offset);
 
 
 

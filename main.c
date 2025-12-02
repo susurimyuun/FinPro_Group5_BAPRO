@@ -3,72 +3,33 @@
 
 // Identitas dasar (tidak ikut rumus, cuma info)
 typedef struct {
-    char fullName[50];
-    char nickname[30];
-    char dateOfBirth[15];
-} UserIdentity;
-//tes tes
-// Profil yang dipakai untuk matching data negara (region, timezone, dll)
-typedef struct {
-    int gender;              
-    int region;              
-    char country[40];        
-    char timeZone[20];      
 
-    int mainLanguage;        
-    char otherLanguages[100];
-} MatchProfile;
-
-// Rating 0–10 untuk tiap dimensi (buat dibandingkan ke tabel negara)
-typedef struct {
-    int resources; 
+    int id;
+    const char name[50];
+    const char region[50];
+    int sdg_focus;        
+    
+    // Core Stats
+    int resources;
     int needs;
-    int techLevel;           
-    int politicalWill;     
-    int economicStrength;   
-    int humanCapital;       
-    int digitalReadiness;    
-    int climateVulnerability;
-} ScoreProfile;
+    int tech_level;
+    int political_will;
+    int economic_strength;
+    int human_capital;
+    int digital_readiness;
+    int climate_vulnerability;
 
-// Metode + rating (khusus untuk matching method 1–5)
-typedef struct {
-    int method;         
-    ScoreProfile score; 
-} MethodProfile;
+    // Bonus Variables
+    int english_proficiency; // 0-10
+    int trade_openness;      // 0-10
+    
+    // NEW: Time Zone
+    float utc_offset;        // e.g., 7.0 for UTC+7, 5.5 for UTC+5:30
+} User_Data;
 
-// User lengkap
-typedef struct {
-    UserIdentity id;
-    MatchProfile match;
-    MethodProfile methodProfile;
-} User;
+// DISPLAY FUNCTIONS
 
-// LIST DISPLAY
-void printGenderList() {
-    printf("\nGender = \n");
-    printf("1. Male\n");
-    printf("2. Female\n");
-    printf("3. Prefer not to say\n");
-    printf("4. Other\n");
-}
 
-void printRegionList() {
-    printf("\nRegion = \n");
-    printf("1. Southeast Asia\n");
-    printf("2. South Asia\n");
-    printf("3. Central Asia\n");
-}
-
-void printMainLanguageList() {
-    printf("\nInternational Main Language = \n");
-    printf("1. English\n");
-    printf("2. Mandarin\n");
-    printf("3. Spanish\n");
-    printf("4. French\n");
-    printf("5. Arabic\n");
-    printf("6. Russian\n");
-}
 
 void printMethodList() {
     printf("\nMatching Method = \n");
@@ -79,63 +40,8 @@ void printMethodList() {
     printf("5. Venture Capitalist\n");
 }
 
-// Input identitas user
-void inputIdentity(UserIdentity *id) {
-    printf("\n=== MAIN INPUT USER IDENTITY ===\n");
-
-    printf("Full Name                    : ");
-    scanf(" %49[^\n]", id->fullName);
-
-    printf("Nickname                     : ");
-    scanf(" %29[^\n]", id->nickname);
-
-    printf("Date of Birth (DD-MM-YYYY)   : ");
-    scanf(" %14[^\n]", id->dateOfBirth);
-}
 
 // Input profil untuk matching region / bahasa / timezone
-void inputMatchProfile(MatchProfile *m) {
-    printf("\n=== INPUT MATCH PROFILE ===\n");
-
-    printGenderList();
-    printf("Choose Gender (1-4)          : ");
-    scanf("%d", &m->gender);
-
-    // validation
-    while (m->gender < 1 || m->gender > 4) {
-        printf("Invalid input. Choose 1-4 : ");
-        scanf("%d", &m->gender);
-    }
-
-    printRegionList();
-    printf("Choose Region (1-3)          : ");
-    scanf("%d", &m->region);
-
-    // validation
-    while (m->region < 1 || m->region > 3) {
-        printf("Invalid input. Choose 1-3 : ");
-        scanf("%d", &m->region);
-    }
-
-    printf("Country                      : ");
-    scanf(" %39[^\n]", m->country);
-
-    printf("Time Zone (ex: Jakarta GMT+7) : ");
-    scanf(" %19[^\n]", m->timeZone);
-
-    printMainLanguageList();
-    printf("Choose Main Language (1-6)   : ");
-    scanf("%d", &m->mainLanguage);
-
-    // validation
-    while (m->mainLanguage < 1 || m->mainLanguage > 6) {
-        printf("Invalid input. Choose 1-6 : ");
-        scanf("%d", &m->mainLanguage);
-    }
-
-    printf("Other Languages (free text)  : ");
-    scanf(" %99[^\n]", m->otherLanguages);
-}
 
 // Input metode + rating 0–10 untuk tiap dimensi
 void inputMethodProfile(MethodProfile *mp) {
@@ -212,15 +118,48 @@ void inputMethodProfile(MethodProfile *mp) {
     printf("\nMethod & rating scores saved! \n");
 }
 
+void Donor_Execute(currentUser[], ){
+
+}
+
 // MAIN
 // execute the program 
 
 int main() {
-    User currentUser;
+    User_Data currentUser;
+    User_Data Asian_Countries = {
+        {1, "Timor-Leste", "SE Asia", 1, 4, 9, 2, 5, 3, 6, 3, 8,    3, 2,   9.0},
+        {2, "India", "South Asia", 2, 8, 7, 8, 6, 9, 6, 6, 7,       7, 5,   5.5},
+        {3, "Thailand", "SE Asia", 3, 6, 5, 6, 4, 7, 8, 6, 6,       4, 7,   7.0},
+        {4, "Cambodia", "SE Asia", 4, 3, 8, 3, 3, 4, 6, 4, 7,       3, 5,   7.0},
+        {5, "Bangladesh", "South Asia", 5, 5, 8, 4, 5, 6, 7, 5, 9,  5, 4,   6.0},
+        {6, "Tajikistan", "Central Asia", 6, 3, 7, 3, 4, 3, 7, 3, 6, 2, 3,   5.0},
+        {7, "Indonesia", "SE Asia", 7, 7, 6, 5, 4, 9, 7, 5, 6,      5, 6,   7.0}, // WIB
+        {8, "Laos", "SE Asia", 7, 2, 9, 2, 3, 3, 6, 3, 6,           2, 3,   7.0},
+        {9, "Philippines", "SE Asia", 8, 5, 7, 5, 4, 6, 7, 5, 9,    9, 6,   8.0},
+        {10, "Malaysia", "SE Asia", 9, 7, 4, 7, 6, 7, 8, 7, 5,      8, 8,   8.0},
+        {11, "Vietnam", "SE Asia", 9, 5, 6, 5, 5, 7, 7, 6, 7,       5, 8,   7.0},
+        {12, "Nepal", "South Asia", 10, 3, 8, 3, 4, 3, 6, 4, 8,     4, 3,   5.8}, // UTC+5:45 approx
+        {13, "South Korea", "East Asia", 11, 9, 2, 10, 7, 9, 9, 9, 3, 6, 9,   9.0},
+        {14, "Brunei", "SE Asia", 12, 9, 2, 5, 6, 8, 8, 6, 5,       7, 6,   8.0},
+        {15, "Maldives", "South Asia", 13, 5, 9, 4, 6, 5, 7, 5, 10, 6, 5,   5.0},
+        {16, "Sri Lanka", "South Asia", 14, 4, 7, 5, 5, 4, 8, 5, 7, 6, 5,   5.5},
+        {17, "Bhutan", "South Asia", 15, 4, 4, 3, 8, 4, 7, 4, 6,    5, 3,   6.0},
+        {18, "Myanmar", "SE Asia", 16, 2, 10, 1, 1, 2, 6, 3, 9,     3, 1,   6.5},
+        {19, "Singapore", "SE Asia", 17, 10, 1, 10, 9, 10, 10, 10, 2, 10, 10,  8.0},
+        {20, "Japan", "East Asia", 9, 9, 2, 10, 9, 10, 10, 9, 4,    4, 8,   9.0},
+        {21, "Kazakhstan", "Central Asia", 7, 7, 4, 5, 5, 6, 7, 6, 5, 3, 5,   5.0},
+        {22, "Pakistan", "South Asia", 13, 3, 9, 4, 3, 4, 4, 4, 9,  6, 4,   5.0}}
 
-    inputIdentity(&currentUser.id);              // nama, nickname, DOB
-    inputMatchProfile(&currentUser.match);       // gender, region, country, timezone, bahasa
-    inputMethodProfile(&currentUser.methodProfile); // method 1–5 + 8 rating 0–10
+    printf("\n=== INPUT MATCH PROFILE ===\n");
+
+    printf("Country                      : ");
+    scanf(" %39[^\n]", currentUser.);
+
+    printf("Time Zone (ex: Jakarta 7) : ");
+    scanf(" %19[^\n]", m->timeZone);
+
+
 
     // after this we can apply the :
     // currentUser.methodProfile.method  -> pilih algoritma / method

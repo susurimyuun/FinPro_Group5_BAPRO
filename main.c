@@ -5,8 +5,8 @@
 typedef struct {
 
     int id;
-    const char name[50]; //nama negara
-    const char region[50];
+    char name[50]; //nama negara
+    char region[50];
     int sdg_focus;        
     
     // Core Stats
@@ -126,7 +126,7 @@ void inputMethodProfile(score *mp) {
     }
 
 
-    pritnf ("Trade opennes for distance point plus one country to another (0-10): ");
+    printf ("Trade opennes for distance point plus one country to another (0-10): ");
     scanf("%d", mp->trade_openness);
      while (mp->trade_openness < 0 || mp->trade_openness > 10) {
         printf("Invalid. Enter 0-10: ");
@@ -144,7 +144,7 @@ void Donor_Execute( ){
 
 int main() {
     score currentUser;
-    score Asian_Countries = {
+    score Asian_Countries[] = {
         {1, "Timor-Leste", "SE Asia", 1, 4, 9, 2, 5, 3, 6, 3, 8,    3, 2,   9.0},
         {2, "India", "South Asia", 2, 8, 7, 8, 6, 9, 6, 6, 7,       7, 5,   5.5},
         {3, "Thailand", "SE Asia", 3, 6, 5, 6, 4, 7, 8, 6, 6,       4, 7,   7.0},
@@ -168,6 +168,7 @@ int main() {
         {21, "Kazakhstan", "Central Asia", 7, 7, 4, 5, 5, 6, 7, 6, 5, 3, 5, 5.0},
         {22, "Pakistan", "South Asia", 13, 3, 9, 4, 3, 4, 4, 4, 9,  6, 4,   5.0}
     };
+    printf(Asian_Countries);
 
 
 

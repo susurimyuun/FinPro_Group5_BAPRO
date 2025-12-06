@@ -166,7 +166,12 @@ int main() {
         {19, "Singapore", "SE Asia", 17, 10, 1, 10, 9, 10, 10, 10, 2, 10, 10, 8.0},
         {20, "Japan", "East Asia", 9, 9, 2, 10, 9, 10, 10, 9, 4,    4, 8,   9.0},
         {21, "Kazakhstan", "Central Asia", 7, 7, 4, 5, 5, 6, 7, 6, 5, 3, 5, 5.0},
-        {22, "Pakistan", "South Asia", 13, 3, 9, 4, 3, 4, 4, 4, 9,  6, 4,   5.0}
+        {22, "Pakistan", "South Asia", 13, 3, 9, 4, 3, 4, 4, 4, 9,  6, 4,   5.0},
+        {23, "China", "East Asia", 9, 9, 4, 9, 5, 10, 8, 9, 5, 3, 6, 8.0},
+        {24, "Saudi Arabia", "West Asia", 7, 10, 2, 7, 5, 9, 7, 8, 8, 5, 6, 3.0},
+        {25, "Taiwan", "East Asia", 9, 8, 2, 10, 8, 9, 9, 9, 7, 6, 9, 8.0},
+        {26, "Mongolia", "East Asia", 13, 6, 7, 3, 5, 3, 6, 4, 9, 3, 5, 8.0},
+        {27, "Uzbekistan", "Central Asia", 8, 6, 6, 4, 3, 5, 6, 4, 6, 2, 4, 5.0}
     };
     printf(Asian_Countries);
 

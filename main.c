@@ -1,14 +1,13 @@
 #include <stdio.h>
+#include <string.h>   // buat strcpy
+
 // STRUCT DEFINITIONS
-
-// Identitas dasar (tidak ikut rumus, cuma info)
 typedef struct {
-
     int id;
-    const char name[50]; //nama negara
-    const char region[50];
+    char name[50];          // nama negara / user
+    char region[20];        // simpan nama region (Asia, Europe, dll)
     int sdg_focus;        
-    
+
     // Core Stats
     int resources;
     int needs;
@@ -22,43 +21,53 @@ typedef struct {
     // Bonus Variables
     int english_proficiency; // 0-10
     int trade_openness;      // 0-10
-    
+
     // Time Zone
-    float timezone;        // e.g., 7.0 for UTC+7, 5.5 for UTC+5:30
+    float timezone;          // e.g., 7.0 for UTC+7, 5.5 for UTC+5:30
 } score;
-
-// DISPLAY FUNCTIONS
-
-void printMethodList() {
-    printf("\nMatching Method = \n");
-    printf("1. Donor / NGO\n");
-    printf("2. Tech Company\n");
-    printf("3. Climate Activist\n");
-    printf("4. Conservative Government\n");
-    printf("5. Venture Capitalist\n");
-}
-
-
 
 // Input metode + rating 0–10 for every category
 void inputMethodProfile(score *mp) {
+    int region_choice = 0;   // buat menu region
+
     printf("\n===== INPUT MAIN DATA USER ======\n");
 
-    printf ("input your country name :  ");
-    scanf("%s", mp->name);
+    printf("Input your country name : ");
+    scanf(" %49s", mp->name);    // %49s biar aman
 
-    printf ("input your region : ");
-    scanf("%s", mp->region);
+    // ==== REGION MENU ====
+    printf("\nChoose your region:\n");
+    printf("1. Asia\n");
+    printf("2. Africa\n");
+    printf("3. Europe\n");
+    printf("4. North-America\n");
+    printf("5. South-America\n");
+    printf("Enter choice (1-5): ");
+    scanf("%d", &region_choice);
 
-    printf ("English proficiency level (0-10): ");
-    scanf("%d", mp->english_proficiency);
+    while (region_choice < 1 || region_choice > 5) {
+        printf("Invalid. Choose 1–5: ");
+        scanf("%d", &region_choice);
+    }
+
+    switch (region_choice) {
+        case 1: strcpy(mp->region, "Asia"); break;
+        case 2: strcpy(mp->region, "Africa"); break;
+        case 3: strcpy(mp->region, "Europe"); break;
+        case 4: strcpy(mp->region, "North-America"); break;
+        case 5: strcpy(mp->region, "South-America"); break;
+    }
+
+    // ==== BONUS: English & Timezone ====
+    printf("English proficiency level (0-10): ");
+    scanf("%d", &mp->english_proficiency);
     while (mp->english_proficiency < 0 || mp->english_proficiency > 10) {
         printf("Invalid. Enter 0-10: ");
         scanf("%d", &mp->english_proficiency);
     }
 
-    printf("Your country timezone (ex: 09:00 -> 9.0): ");
-    scanf("%d", mp->timezone);
+    printf("Your country timezone (ex: 9.0 for UTC+9): ");
+    scanf("%f", &mp->timezone);
 
     printf("\n=== INPUT MATCHING METHOD & SCORES ===\n");
 
@@ -118,17 +127,9 @@ void inputMethodProfile(score *mp) {
         scanf("%d", &mp->climate_vulnerability);
     }
 
-    printf ("English proficiency level (0-10): ");
-    scanf("%d", mp->english_proficiency);
-    while (mp->english_proficiency < 0 || mp->english_proficiency > 10) {
-        printf("Invalid. Enter 0-10: ");
-        scanf("%d", &mp->english_proficiency);
-    }
-
-
-    pritnf ("Trade opennes for distance point plus one country to another (0-10): ");
-    scanf("%d", mp->trade_openness);
-     while (mp->trade_openness < 0 || mp->trade_openness > 10) {
+    printf("Trade openness (0-10)        : ");
+    scanf("%d", &mp->trade_openness);
+    while (mp->trade_openness < 0 || mp->trade_openness > 10) {
         printf("Invalid. Enter 0-10: ");
         scanf("%d", &mp->trade_openness);
     }

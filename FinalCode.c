@@ -86,6 +86,28 @@ Method pickMethod() {
     return (Method)m;
 }
 
+//-nama sdg
+char* SDGNames[] = {
+    "",                  // index 0 ga dipake
+    "No Poverty",        
+    "Zero Hunger",       
+    "Good Health",       
+    "Quality Education", 
+    "Gender Equality",   
+    "Clean Water",      
+    "Affordable Energy",
+    "Decent Work",    
+    "Industry, Innovation",
+    "Reduced Inequality",  
+    "Sustainable Cities",  
+    "Responsible Consumption", 
+    "Climate Action",   
+    "Life Below Water",   
+    "Life on Land",     
+    "Peace & Justice",   
+    "Partnerships"    
+};
+
 
 //-validation
 int inputSDG(Method method) {
@@ -102,10 +124,12 @@ int inputSDG(Method method) {
 
     printf("\nThis method matches SDGs: ");
     for (int i = 0; i < data.sdgCount; i++) {
-        printf("%d ", data.sdgList[i]);
+        printf("%d. %s", data.sdgList[i], SDGNames[data.sdgList[i]]);
+        if (i < data.sdgCount - 1) printf(", ");
     }
+    printf("\n");
 
-    printf("\nEnter your SDG focus: ");
+    printf("Enter your SDG focus (number 1-17): ");
     scanf("%d", &sdg);
 
     while (!valid) {
@@ -118,13 +142,15 @@ int inputSDG(Method method) {
         if (!valid) {
             printf("Invalid SDG. Valid: ");
             for (int i = 0; i < data.sdgCount; i++) {
-                printf("%d ", data.sdgList[i]);
+                printf("%d. %s", data.sdgList[i], SDGNames[data.sdgList[i]]);
+                if (i < data.sdgCount - 1) printf(", ");
             }
             printf("\nEnter again: ");
             scanf("%d", &sdg);
         }
     }
 
+    printf("You chose SDG: %d. %s\n", sdg, SDGNames[sdg]);
     return sdg;
 }
 

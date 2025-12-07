@@ -197,26 +197,22 @@ float Bonus (score database[], score user, int index){
     return Score;   
 }
 
-void venture_execute(score database[],score user, int array_size){
+void conservatice_execute(score database[],score user, int array_size){
     printf("\n==VENTURE CAPITALIST STRATEGY==\n");
-    printf("Logic needs : High Human Capital + 4-7 of Economic Strengths + Digital Readiness + Tech Level + Trade Openness\n");
-    printf("Bonuses : Timezone Efficiency + English Proficiency + Distance\n");
+    printf("Logic needs : High Political Will + High Economic Strength + Low CLimate Vulnerability\n");
+    printf("Bonuses : Timezone Efficiency + English Proficiency + Distance + Trade Openness\n");
     float result[array_size];
     for (int index = 0; index < array_size; index++){
         float score = 0;
-        score += (database[index].human_capital * 10);
-        score += (database[index].digital_readiness * 5);
-        score += (database[index].tech_level * 2.5);
-        score += (database[index].trade_openness * 3);
-
-        if(database[index].economic_strength < 4){
-            score -= (database[index].economic_strength * 6);
+        score += (database[index].political_will * 10);
+        if (database[index].economic_strength > 7){
+            score += 30;
         }
-        else if(database[index].economic_strength > 8){
-            score -= (database[index].economic_strength * 4);
+        if (database[index].climate_vulnerability > 7){
+            score -= 35;
         }
-        else {
-            score += (database[index].economic_strength * 5);
+        if (database[index].trade_openness > 6){
+            score += 15;
         }
 
         float bonus_score = Bonus(database,user,index);
@@ -247,7 +243,7 @@ void venture_execute(score database[],score user, int array_size){
 
     for (int index4 = 0; index4 < 3; index4++){
         int temp2 = temp_index[index4];
-        printf("%i. Country : %s , Region : %s  , SDG Focus : %i , Human Capital : %d ,\nDigital Readiness : %d, Tech Level : %d, Trade Openness : %d \nEnglish Proficiency : %d\n", index4+1, database[temp2].name, database[temp2].region,database[temp2].sdg_focus,database[temp2].human_capital,database[temp2].digital_readiness,database[temp2].tech_level,database[temp2].trade_openness,database[temp2].english_proficiency,database[temp2].trade_openness);
+        printf("%i. Country : %s , Region : %s  , SDG Focus : %i , Political Will : %d , Economic Strength : %d, Climate Vulnerability : %d\nDigital Readiness : %d, Tech Level : %d, Trade Openness : %d \nEnglish Proficiency : %d\n", index4+1, database[temp2].name, database[temp2].region,database[temp2].sdg_focus,database[temp2].political_will,database[temp2].economic_strength,database[temp2].climate_vulnerability,database[temp2].digital_readiness,database[temp2].tech_level,database[temp2].trade_openness,database[temp2].english_proficiency,database[temp2].trade_openness);
         printf("Score : %f\n", result[index4]);
     }
     for (int coba = 0; coba < array_size; coba ++){
@@ -295,7 +291,7 @@ int main() {
     };
     int array_size = sizeof(Asian_Countries) / sizeof(Asian_Countries[0]);
     inputMethodProfile(&currentUser);
-    venture_execute(Asian_Countries,currentUser,array_size);
+    conservatice_execute(Asian_Countries,currentUser,array_size);
 
 
 

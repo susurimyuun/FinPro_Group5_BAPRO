@@ -684,11 +684,5 @@ int main() {
     inputMethodProfile(&currentUser);
 
 
-    // after this we can apply the :
-    // currentUser.methodProfile.method  -> pilih algoritma / method
-    // currentUser.methodProfile.score   -> dibandingkan ke data negara (tabel Excel)
-    // currentUser.match.region, timeZone, mainLanguage -> filter tambahan (bisa di gunakan hanya tampilan saja)
-    // BESOK GUE MAU BUAT PRINTF RESULTNYA, tapi nanti aja tunggu programnya jadi YAKK
-
     return 0; 
 }

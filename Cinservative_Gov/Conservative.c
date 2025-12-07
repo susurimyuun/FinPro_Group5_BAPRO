@@ -27,7 +27,6 @@ typedef struct {
     
     // Time Zone
     float timezone;        // e.g., 7.0 for UTC+7, 5.5 for UTC+5:30
-    int sdg_chosen;
 } score;
 
 // DISPLAY FUNCTIONS

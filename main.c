@@ -51,14 +51,14 @@ void inputMethodProfile(score *mp) {
     scanf("%s", mp->region);
 
     printf ("English proficiency level (0-10): ");
-    scanf("%d", mp->english_proficiency);
+    scanf("%d", &mp->english_proficiency);
     while (mp->english_proficiency < 0 || mp->english_proficiency > 10) {
         printf("Invalid. Enter 0-10: ");
         scanf("%d", &mp->english_proficiency);
     }
 
     printf("Your country timezone (ex: 09:00 -> 9.0): ");
-    scanf("%d", mp->timezone);
+    scanf("%d", &mp->timezone);
 
     printf("\n=== INPUT MATCHING METHOD & SCORES ===\n");
 
@@ -119,7 +119,7 @@ void inputMethodProfile(score *mp) {
     }
 
     printf ("English proficiency level (0-10): ");
-    scanf("%d", mp->english_proficiency);
+    scanf("%d", &mp->english_proficiency);
     while (mp->english_proficiency < 0 || mp->english_proficiency > 10) {
         printf("Invalid. Enter 0-10: ");
         scanf("%d", &mp->english_proficiency);
@@ -127,16 +127,12 @@ void inputMethodProfile(score *mp) {
 
 
     printf ("Trade opennes for distance point plus one country to another (0-10): ");
-    scanf("%d", mp->trade_openness);
+    scanf("%d", &mp->trade_openness);
      while (mp->trade_openness < 0 || mp->trade_openness > 10) {
         printf("Invalid. Enter 0-10: ");
         scanf("%d", &mp->trade_openness);
     }
     
-}
-
-void Donor_Execute( ){
-
 }
 
 // MAIN

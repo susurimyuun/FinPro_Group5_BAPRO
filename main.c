@@ -51,14 +51,24 @@ void inputMethodProfile(score *mp) {
     }
 
     switch (region_choice) {
-        case 1: strcpy(mp->region, "Asia"); break;
-        case 2: strcpy(mp->region, "Africa"); break;
-        case 3: strcpy(mp->region, "Europe"); break;
-        case 4: strcpy(mp->region, "North-America"); break;
-        case 5: strcpy(mp->region, "South-America"); break;
+        case 1: 
+            strcpy(mp->region, "Asia"); 
+            break;
+        case 2: 
+            strcpy(mp->region, "Africa"); 
+            break;
+        case 3: 
+            strcpy(mp->region, "Europe"); 
+            break;
+        case 4: 
+            strcpy(mp->region, "North-America"); 
+            break;
+        case 5: 
+            strcpy(mp->region, "South-America"); 
+            break;
     }
 
-    // ==== BONUS: English & Timezone ====
+    //BONUS: English & Timezone
     printf("English proficiency level (0-10): ");
     scanf("%d", &mp->english_proficiency);
     while (mp->english_proficiency < 0 || mp->english_proficiency > 10) {

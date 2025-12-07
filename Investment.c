@@ -143,9 +143,6 @@ float Bonus (score database[], score user, int index){
         if (database[i].english_proficiency > 7){
                 Score += database[i].english_proficiency * 1.5;
             }
-            if (database[i].trade_openness > 6){
-                Score += database[i].trade_openness * 1.5;
-            }
             if (strcmp(database[i].region, "East Asia") == 0 && strcmp(user.region, "America") == 0){
                 Score += 15;
             }
@@ -210,7 +207,7 @@ void venture_execute(score database[],score user, int array_size){
         score += (database[index].human_capital * 10);
         score += (database[index].digital_readiness * 5);
         score += (database[index].tech_level * 2.5);
-        score += (database[index].trade_openness * 6);
+        score += (database[index].trade_openness * 3);
 
         if(database[index].economic_strength < 4){
             score -= (database[index].economic_strength * 6);
@@ -250,11 +247,13 @@ void venture_execute(score database[],score user, int array_size){
 
     for (int index4 = 0; index4 < 3; index4++){
         int temp2 = temp_index[index4];
-        printf("%i. Country : %s , Region : %s  , SDG Focus : %i , Climate Vulnerability : %d , \nEnglish Proficiency : %d , Trade_Openness : %d\n", index4+1, database[temp2].name, database[temp2].region,database[temp2].sdg_focus,database[temp2].climate_vulnerability,database[temp2].english_proficiency,database[temp2].trade_openness);
+        printf("%i. Country : %s , Region : %s  , SDG Focus : %i , Human Capital : %d ,\nDigital Readiness : %d, Tech Level : %d, Trade Openness : %d \nEnglish Proficiency : %d\n", index4+1, database[temp2].name, database[temp2].region,database[temp2].sdg_focus,database[temp2].human_capital,database[temp2].digital_readiness,database[temp2].tech_level,database[temp2].trade_openness,database[temp2].english_proficiency,database[temp2].trade_openness);
         printf("Score : %f\n", result[index4]);
     }
     for (int coba = 0; coba < array_size; coba ++){
-        printf("%i Score: %f",coba+1,result[coba]);
+        int temp3 = temp_index[coba];
+        printf("==========================\n");
+        printf("%i Country : %s Score: %f",coba+1,database[temp3].name,result[coba]);
         printf("\n");
     }
 

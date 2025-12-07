@@ -689,7 +689,6 @@ int main() {
     // currentUser.methodProfile.score   -> dibandingkan ke data negara (tabel Excel)
     // currentUser.match.region, timeZone, mainLanguage -> filter tambahan (bisa di gunakan hanya tampilan saja)
     // BESOK GUE MAU BUAT PRINTF RESULTNYA, tapi nanti aja tunggu programnya jadi YAKK
-    //pelis
 
     return 0; 
 }

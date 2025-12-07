@@ -245,7 +245,9 @@ void coalition_execute(score database[],score user,int array_size){
         printf("Score : %f\n", result[index4]);
     }
     for (int coba = 0; coba < array_size; coba ++){
-        printf("%i Score: %f",coba+1,result[coba]);
+        int temp3 = temp_index[coba];
+        printf("==========================\n");
+        printf("%i Country : %s Score: %f",coba+1,database[temp3].name,result[coba]);
         printf("\n");
     }
 

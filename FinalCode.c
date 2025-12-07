@@ -122,13 +122,10 @@ int inputSDG(Method method) {
         }
     }
 
-    printf("\nThis method matches SDGs: ");
+    printf("\nThis method matches SDGs:\n");
     for (int i = 0; i < data.sdgCount; i++) {
-        printf("%d. %s", data.sdgList[i], SDGNames[data.sdgList[i]]);
-        if (i < data.sdgCount - 1) printf(", ");
+        printf("%d. %s\n", data.sdgList[i], SDGNames[data.sdgList[i]]);
     }
-    printf("\n");
-
     printf("Enter your SDG focus (number 1-17): ");
     scanf("%d", &sdg);
 
@@ -140,14 +137,14 @@ int inputSDG(Method method) {
             }
         }
         if (!valid) {
-            printf("Invalid SDG. Valid: ");
+            printf("Invalid SDG. Valid:\n");
             for (int i = 0; i < data.sdgCount; i++) {
-                printf("%d. %s", data.sdgList[i], SDGNames[data.sdgList[i]]);
-                if (i < data.sdgCount - 1) printf(", ");
+                printf("%d. %s\n", data.sdgList[i], SDGNames[data.sdgList[i]]);
             }
-            printf("\nEnter again: ");
+            printf("Enter again: ");
             scanf("%d", &sdg);
         }
+
     }
 
     printf("You chose SDG: %d. %s\n", sdg, SDGNames[sdg]);

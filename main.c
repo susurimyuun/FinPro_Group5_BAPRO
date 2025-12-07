@@ -1,6 +1,28 @@
 #include <stdio.h>
 // STRUCT DEFINITIONS
 
+//-buat enum for sdg
+typedef enum {
+    DONOR = 1,
+    COALITION,
+    INVESTMENT,
+    TECH_TRANSFER,
+    NEXUS_PEACE
+} Method;
+
+typedef enum {
+    SDG1 = 1, SDG2, SDG3, SDG4, SDG5, SDG6, SDG7, SDG8, SDG9,
+    SDG10, SDG11, SDG12, SDG13, SDG14, SDG15, SDG16, SDG17
+} SDG;
+
+typedef union {
+    int donor_sdg[4];
+    int coalition_sdg[5];
+    int investment_sdg[3];
+    int tech_sdg[3];
+    int nexus_sdg[3];
+} SDGList;
+
 // Identitas dasar (tidak ikut rumus, cuma info)
 typedef struct {
 
@@ -26,6 +48,85 @@ typedef struct {
     // Time Zone
     float timezone;        // e.g., 7.0 for UTC+7, 5.5 for UTC+5:30
 } score;
+
+//-sdg databse
+typedef struct {
+    Method method;
+    int sdgCount;
+    int sdgList[6];
+} MethodData;
+
+MethodData database[] = {
+    { DONOR,        4, {1, 2, 3, 4} },
+    { COALITION,    5, {5, 6, 10, 11, 17} },
+    { INVESTMENT,   3, {7, 8, 9} },
+    { TECH_TRANSFER,3, {12, 13, 14} },
+    { NEXUS_PEACE,  3, {15, 16, 17} }
+};
+
+//-pick method
+Method pickMethod() {
+    int m;
+    printf("\n===== SDG METHOD MATCHING =====\n\n");
+    printf("Choose collaboration method:\n");
+    printf("1. Donor\n");
+    printf("2. Coalition\n");
+    printf("3. Investment\n");
+    printf("4. Tech Transfer\n");
+    printf("5. Nexus / Peace\n");
+    printf("Input (1–5): ");
+
+    scanf("%d", &m);
+
+    while (m < 1 || m > 5) {
+        printf("Invalid. Enter 1–5: ");
+        scanf("%d", &m);
+    }
+
+    return (Method)m;
+}
+
+
+//-validation
+int inputSDG(Method method) {
+    int sdg;
+    int valid = 0;
+    MethodData data;
+
+    for (int i = 0; i < 5; i++) {
+        if (database[i].method == method) {
+            data = database[i];
+            break;
+        }
+    }
+
+    printf("\nThis method matches SDGs: ");
+    for (int i = 0; i < data.sdgCount; i++) {
+        printf("%d ", data.sdgList[i]);
+    }
+
+    printf("\nEnter your SDG focus: ");
+    scanf("%d", &sdg);
+
+    while (!valid) {
+        for (int i = 0; i < data.sdgCount; i++) {
+            if (sdg == data.sdgList[i]) {
+                valid = 1;
+                break;
+            }
+        }
+        if (!valid) {
+            printf("Invalid SDG. Valid: ");
+            for (int i = 0; i < data.sdgCount; i++) {
+                printf("%d ", data.sdgList[i]);
+            }
+            printf("\nEnter again: ");
+            scanf("%d", &sdg);
+        }
+    }
+
+    return sdg;
+}
 
 // DISPLAY FUNCTIONS
 
@@ -144,6 +245,14 @@ void Donor_Execute( ){
 
 int main() {
     score currentUser;
+
+    //pilih metode 1-5
+    Method chosenMethod = pickMethod();
+
+    //pilih sdg sesuai
+    int chosenSDG = inputSDG(chosenMethod);
+    currentUser.sdg_focus = chosenSDG; //simpen disini
+
     score Asian_Countries[] = {
         {1, "Timor-Leste", "SE Asia", 1, 4, 9, 2, 5, 3, 6, 3, 8,    3, 2,   9.0},
         {2, "India", "South Asia", 2, 8, 7, 8, 6, 9, 6, 6, 7,       7, 5,   5.5},

@@ -252,9 +252,9 @@ void techcomp_execute(score database[],score user, int array_size){
         printf("%i. Country : %s , Region : %s  , SDG Focus : %i , Tech Level : %d , Digital Readiness : %d \nEnglish Proficiency : %d , Trade_Openness : %d\n", index4+1, database[temp2].name, database[temp2].region,database[temp2].sdg_focus,database[temp2].tech_level,database[temp2].digital_readiness,database[temp2].english_proficiency,database[temp2].trade_openness);
         printf("Score : %f\n", result[index4]);
     }
-    for (int coba = 0; coba < array_size; coba ++){
+    for (int coba = 0; coba < array_size; coba++){
         int temp3 = temp_index[coba];
-        printf("==========================");
+        printf("==========================\n");
         printf("%i Country : %s Score: %f",coba+1,database[temp3].name,result[coba]);
         printf("\n");
     }

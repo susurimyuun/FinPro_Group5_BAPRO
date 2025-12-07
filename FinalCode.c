@@ -74,12 +74,12 @@ Method pickMethod() {
     printf("3. Investment\n");
     printf("4. Tech Transfer\n");
     printf("5. Nexus / Peace\n");
-    printf("Input (1–5): ");
+    printf("Input (1-5): ");
 
     scanf("%d", &m);
 
     while (m < 1 || m > 5) {
-        printf("Invalid. Enter 1–5: ");
+        printf("Invalid. Enter 1-5: ");
         scanf("%d", &m);
     }
 
@@ -150,13 +150,6 @@ void inputMethodProfile(score *mp) {
 
     printf ("input your region : ");
     scanf("%s", mp->region);
-
-    printf ("English proficiency level (0-10): ");
-    scanf("%d", &mp->english_proficiency);
-    while (mp->english_proficiency < 0 || mp->english_proficiency > 10) {
-        printf("Invalid. Enter 0-10: ");
-        scanf("%d", &mp->english_proficiency);
-    }
 
     printf("Your country timezone (ex: 09:00 -> 9.0): ");
     scanf("%f", &mp->timezone);

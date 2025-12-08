@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-// STRUCT DEFINITIONS
 
-// Identitas dasar (tidak ikut rumus, cuma info)
+//Enumeration (for main identitiy not colab with function)
 typedef enum {
     DONOR = 1,
     COALITION,
@@ -28,23 +27,23 @@ typedef union {
 typedef struct {
 
     int id;
-    char name[50]; //nama negara
+    char name[50]; //country name 
     char region[50];
     int sdg_focus;        
     
     // Core Stats
-    int resources;
-    int needs;
-    int tech_level;
-    int political_will;
-    int economic_strength;
-    int human_capital;
-    int digital_readiness;
-    int climate_vulnerability;
+    int resources; //how much cpacity or funcing they have
+    int needs; //how much help or support they still need
+    int tech_level; //how advanced their technology is
+    int political_will; //how willing the government is to supporting SGD projects
+    int economic_strength; //how strong the economy is
+    int human_capital; //quality of people, education skills
+    int digital_readiness; //readiness for digital solution
+    int climate_vulnerability; //how vulnerable they are to climate change
 
     // Bonus Variables
-    int english_proficiency; // 0-10
-    int trade_openness;      // 0-10
+    int english_proficiency; // Match making from 0-10 //how easy to communicate with english
+    int trade_openness;      // Match making from 0-10 //how to open they are to trade and cross border cooperation
     
     // Time Zone
     float timezone;        // e.g., 7.0 for UTC+7, 5.5 for UTC+5:30
@@ -88,7 +87,7 @@ Method pickMethod() {
 
 //-nama sdg
 char* SDGNames[] = {
-    "",                  // index 0 ga dipake
+    "",                  // not using the index 0
     "No Poverty",        
     "Zero Hunger",       
     "Good Health",       
@@ -111,9 +110,9 @@ char* SDGNames[] = {
 
 //-validation
 int inputSDG(Method method) {
-    int sdg;
-    int valid = 0;
-    MethodData data;
+    int sdg; //SDG chosen by the user
+    int valid = 0; //Flag indicating whether the SDG is valid
+    MethodData data; //The method’s SDG mapping currently in use
 
     for (int i = 0; i < 5; i++) {
         if (database[i].method == method) {
@@ -122,10 +121,13 @@ int inputSDG(Method method) {
         }
     }
 
-    printf("\nThis method matches SDGs:\n");
+    printf("\nThis method matches SDGs: ");
     for (int i = 0; i < data.sdgCount; i++) {
-        printf("%d. %s\n", data.sdgList[i], SDGNames[data.sdgList[i]]);
+        printf("%d. %s", data.sdgList[i], SDGNames[data.sdgList[i]]);
+        if (i < data.sdgCount - 1) printf(", ");
     }
+    printf("\n");
+
     printf("Enter your SDG focus (number 1-17): ");
     scanf("%d", &sdg);
 
@@ -137,14 +139,14 @@ int inputSDG(Method method) {
             }
         }
         if (!valid) {
-            printf("Invalid SDG. Valid:\n");
+            printf("Invalid SDG. Valid: ");
             for (int i = 0; i < data.sdgCount; i++) {
-                printf("%d. %s\n", data.sdgList[i], SDGNames[data.sdgList[i]]);
+                printf("%d. %s", data.sdgList[i], SDGNames[data.sdgList[i]]);
+                if (i < data.sdgCount - 1) printf(", ");
             }
-            printf("Enter again: ");
+            printf("\nEnter again: ");
             scanf("%d", &sdg);
         }
-
     }
 
     printf("You chose SDG: %d. %s\n", sdg, SDGNames[sdg]);
@@ -695,7 +697,7 @@ int main() {
         case TECH_TRANSFER : techcomp_execute(Asian_Countries,currentUser,array_size,chosenSDG); break;
         case NEXUS_PEACE : conservatice_execute(Asian_Countries,currentUser,array_size,chosenSDG); break;
     }
-
+    
 
     inputMethodProfile(&currentUser);
 

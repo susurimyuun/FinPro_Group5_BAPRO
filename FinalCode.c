@@ -372,6 +372,7 @@ void Donor_Execute(score database[], score user, int array_size, int chosenSDG){
         int temp2 = temp_index[index4];
         printf("%i. Country : %s , Region : %s  , SDG Focus : %i , Needs : %d , Political Will : %d , \nEnglish Proficiency : %d , Trade_Openness : %d\n", index4+1, database[temp2].name, database[temp2].region,database[temp2].sdg_focus,database[temp2].needs,database[temp2].political_will,database[temp2].english_proficiency,database[temp2].trade_openness);
         printf("Score : %f\n", result[index4]);
+        printf("===============================\n");
     }
     for (int coba = 0; coba < array_size; coba ++){
         printf("%i Score: %f",coba+1,result[coba]);
@@ -431,6 +432,7 @@ void coalition_execute(score database[],score user,int array_size, int chosenSDG
         int temp2 = temp_index[index4];
         printf("%i. Country : %s , Region : %s  , SDG Focus : %i , Climate Vulnerability : %d , \nEnglish Proficiency : %d , Trade_Openness : %d\n", index4+1, database[temp2].name, database[temp2].region,database[temp2].sdg_focus,database[temp2].climate_vulnerability,database[temp2].english_proficiency,database[temp2].trade_openness);
         printf("Score : %f\n", result[index4]);
+        printf("===============================\n");
     }
     for (int coba = 0; coba < array_size; coba ++){
         int temp3 = temp_index[coba];
@@ -501,6 +503,7 @@ void venture_execute(score database[],score user, int array_size, int chosenSDG)
         int temp2 = temp_index[index4];
         printf("%i. Country : %s , Region : %s  , SDG Focus : %i , Human Capital : %d ,\nDigital Readiness : %d, Tech Level : %d, Trade Openness : %d \nEnglish Proficiency : %d\n", index4+1, database[temp2].name, database[temp2].region,database[temp2].sdg_focus,database[temp2].human_capital,database[temp2].digital_readiness,database[temp2].tech_level,database[temp2].trade_openness,database[temp2].english_proficiency,database[temp2].trade_openness);
         printf("Score : %f\n", result[index4]);
+        printf("===============================\n");
     }
     for (int coba = 0; coba < array_size; coba ++){
         int temp3 = temp_index[coba];
@@ -567,6 +570,7 @@ void conservatice_execute(score database[],score user, int array_size, int chose
         int temp2 = temp_index[index4];
         printf("%i. Country : %s , Region : %s  , SDG Focus : %i , Political Will : %d , Economic Strength : %d, Climate Vulnerability : %d\nDigital Readiness : %d, Tech Level : %d, Trade Openness : %d \nEnglish Proficiency : %d\n", index4+1, database[temp2].name, database[temp2].region,database[temp2].sdg_focus,database[temp2].political_will,database[temp2].economic_strength,database[temp2].climate_vulnerability,database[temp2].digital_readiness,database[temp2].tech_level,database[temp2].trade_openness,database[temp2].english_proficiency,database[temp2].trade_openness);
         printf("Score : %f\n", result[index4]);
+        printf("===============================\n");
     }
     for (int coba = 0; coba < array_size; coba ++){
         int temp3 = temp_index[coba];
@@ -635,6 +639,7 @@ void techcomp_execute(score database[],score user, int array_size, int chosenSDG
         int temp2 = temp_index[index4];
         printf("%i. Country : %s , Region : %s  , SDG Focus : %i , Tech Level : %d , Digital Readiness : %d \nEnglish Proficiency : %d , Trade_Openness : %d\n", index4+1, database[temp2].name, database[temp2].region,database[temp2].sdg_focus,database[temp2].tech_level,database[temp2].digital_readiness,database[temp2].english_proficiency,database[temp2].trade_openness);
         printf("Score : %f\n", result[index4]);
+        printf("===============================\n");
     }
     for (int coba = 0; coba < array_size; coba++){
         int temp3 = temp_index[coba];

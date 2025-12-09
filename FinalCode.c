@@ -153,17 +153,6 @@ int inputSDG(Method method) {
     return sdg;
 }
 
-// DISPLAY FUNCTIONS
-
-void printMethodList() {
-    printf("\nMatching Method = \n");
-    printf("1. Donor / NGO\n");
-    printf("2. Tech Company\n");
-    printf("3. Climate Activist\n");
-    printf("4. Conservative Government\n");
-    printf("5. Venture Capitalist\n");
-}
-
 
 
 // Input metode + rating 0–10 for every category

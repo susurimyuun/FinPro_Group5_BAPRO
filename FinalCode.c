@@ -699,7 +699,6 @@ int main() {
     }
     
 
-    inputMethodProfile(&currentUser);
 
 
     return 0; 

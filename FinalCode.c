@@ -325,10 +325,10 @@ void Donor_Execute(score database[], score user, int array_size, int chosenSDG){
     for (int index = 0; index < array_size; index++){
         float score = 0;
         if (database[index].sdg_focus == chosenSDG){
-                score += 50;
+                score += 100;
         }
         else {
-            score -= 25;
+            score -= 30;
         }
 
         if (user.resources >= database[index].needs){
@@ -392,10 +392,10 @@ void coalition_execute(score database[],score user,int array_size, int chosenSDG
         float scoring = 100;
 
         if (database[index].sdg_focus == chosenSDG){
-            scoring += 50;
+            scoring += 100;
         }
         else {
-            scoring -= 25;
+            scoring -= 30;
         }
 
         float difference = abs(database[index].climate_vulnerability - user.climate_vulnerability);
@@ -450,10 +450,10 @@ void venture_execute(score database[],score user, int array_size, int chosenSDG)
         float score = 0;
 
         if (database[index].sdg_focus == chosenSDG){
-            score += 50;
+            score += 100;
         }
         else {
-            score -= 25;
+            score -= 30;
         }
 
         score += (database[index].human_capital * 10);
@@ -520,10 +520,10 @@ void conservatice_execute(score database[],score user, int array_size, int chose
         float score = 0;
 
         if (database[index].sdg_focus == chosenSDG){
-            score += 50;
+            score += 100;
         }
         else {
-            score -= 25;
+            score -= 30;
         }
 
         score += (database[index].political_will * 10);
@@ -586,10 +586,10 @@ void techcomp_execute(score database[],score user, int array_size, int chosenSDG
         float score = 0;
 
         if (database[index].sdg_focus == chosenSDG){
-            score += 50;
+            score += 100;
         }
         else {
-            score -= 25;
+            score -= 30;
         }
 
         if (database[index].digital_readiness <= 5){
